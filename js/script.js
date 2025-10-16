@@ -22,7 +22,7 @@ function displayCharacters(characters) {
   characters.forEach(char => {
     const charHTML = `
       <div class="character ${char.house.toLowerCase()}">
-        <a href="./index.html">
+        <a href="./details.html?name=${encodeURIComponent(char.name)}">
           <img src="${char.image || './images/placeholder.png'}" alt="${char.name}" />
           <p>${char.name}</p>
         </a>
