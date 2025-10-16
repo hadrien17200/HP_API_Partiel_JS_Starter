@@ -128,21 +128,41 @@ footer p {
   flex-wrap: wrap;
   padding: 30px;
 }
-.characters > div {
-  padding: 30px;
+
+.character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 15px;
+  transition: transform 0.3s, background 0.3s;
 }
-.characters img {
+
+.character:hover {
+  background: #fff6e6;  
+  transform: scale(1.05); 
+}
+
+.character img {
   width: 150px;
   height: 150px;
-  border-radius: 150px;
-  border: 8px solid var(--Gold, #b99049);
+  border-radius: 50%;
+  border: 8px solid var(--gold); 
   background: url(<path-to-image>), lightgray -1.24px 0px/101.653% 141.566% no-repeat;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   object-fit: cover;
+  transition: transform 0.3s, border-color 0.3s;
 }
+
+/* Bordures colorées selon la maison */
+.character.gryffindor img { border-color: var(--red); }
+.character.hufflepuff img { border-color: var(--yellow); }
+.character.ravenclaw img { border-color: var(--blue); }
+.character.slytherin img { border-color: var(--green); }
+
 .characters p {
   text-align: center;
-  color: var(--Gold, #b99049);
+  color: var(--gold);
 }
 
 /* PAGE PERSO */
