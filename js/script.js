@@ -1,16 +1,16 @@
+let allCharacters = [];
 // ======================== API ========================
 
 async function getCharacters() {
-try {
+  try {
     let response = await fetch(`https://hp-api.onrender.com/api/characters`);
     let data = await response.json();
 
-    let first12 = data.slice(0, 12);
-    
-    displayCharacters(first12);
-}catch (error) {
+    allCharacters = data.slice(0, 12);
+    displayCharacters(allCharacters);
+  } catch (error) {
     console.error("Erreur lors de la récupération des personnages :");
-}
+  }
 }
 
 // ======================== Affichage ========================
@@ -31,5 +31,21 @@ function displayCharacters(characters) {
     container.innerHTML += charHTML;
   });
 }
+
+// ==================== Filtrer par maison ====================
+
+const houses = document.querySelectorAll(".house");
+
+houses.forEach(button => {
+  button.addEventListener("click", () => {
+    let house = button.dataset.house;
+
+    let filtered = allCharacters
+      .filter(char => char.house === house)
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    displayCharacters(filtered);
+  });
+});
 
 getCharacters();
